@@ -1,0 +1,130 @@
+body {
+  color: var(--clr-secondary);
+}
+
+.scrolled.navbar-links a {
+  color: var(--clr-secondary);
+}
+
+.scrolled .link:hover {
+  color: var(--clr-primary);
+  background: var(--clr-accent);
+  border-color: var(--clr-accent);
+}
+
+.scrolled.navbar-links li:last-child a {
+  color: var(--clr-secondary);
+  border-color: var(--clr-secondary);
+}
+
+.scrolled.navbar-links li:last-child a:hover {
+  color: var(--clr-primary);
+  background: var(--clr-accent);
+  border-color: var(--clr-accent);
+}
+
+.background {
+  position: absolute;
+  z-index: -2;
+  object-fit: cover;
+}
+
+.gradient-background {
+  position: absolute;
+  z-index: -3;
+  background: linear-gradient(90deg, #CDFFD8, #94B9FF);
+}
+
+.film {
+  position: absolute;
+  z-index: -1;
+  background: rgba(0, 0, 0, 0.6);
+}
+
+.text-region,
+.text-description {
+  font-family: var(--ff-subtext);
+}
+
+.text-region {
+  color: var(--clr-primary);
+  font-size: var(--fs-s);
+  font-weight: 500;
+}
+
+.text-attraction {
+  color: var(--clr-primary);
+  padding: 1.5% 0%;
+  font-family: var(--ff-heading);
+  font-size: var(--fs-xl);
+  font-weight: 100;
+  letter-spacing: 0.05em;
+  text-transform: uppercase
+}
+
+.text-description {
+  color: var(--clr-primary-shade-2);
+  font-size: var(--fs-xs);
+  font-weight: 400;
+}
+
+button {
+  user-select: none;
+}
+
+.section-2 {
+  position: relative;
+  z-index: -2;
+  background-color: var(--clr-primary);
+  text-align: center;
+}
+
+.text-container-2 {
+  margin: auto;
+}
+
+.text-container-2>* {
+  color: var(--clr-secondary);
+}
+
+.text-container-2 h3 {
+  font-family: var(--ff-subtext);
+  font-size: var(--fs-m);
+  font-weight: 100;
+}
+
+.text-container-2 h1 {
+  padding: 2% 0%;
+  color: var(--clr-accent);
+  font-family: var(--ff-heading);
+  font-size: clamp(2.5rem, 6vw + 0.75rem, 20rem);
+  font-weight: 100;
+}
+
+.text-container-2 p {
+  font-family: var(--ff-subtext);
+  font-size: var(--fs-xs);
+}
+
+.section-2 {
+  padding: clamp(5rem, 7.5vw + 3rem, 20rem) 4%;
+}
+
+.fadeIn {
+  animation: fadeIn 2s ease-in;
+}
+
+.fadeOut {
+  animation: fadeOut 2s ease-out;
+}
+
+@media (min-width: 768px) {
+  .navbar-links a {
+    color: var(--clr-primary);
+  }
+
+  .navbar-links li:last-child a {
+    color: var(--clr-primary);
+    border: 0.2em solid var(--clr-primary-shade-1);
+  }
+}
