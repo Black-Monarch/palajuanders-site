@@ -1,0 +1,289 @@
+/* Global Variables */
+:root {
+  --ff-heading: 'Merriweather', sans-serif;
+  --ff-subtext: 'Poppins', sans-serif;
+  --fs-default: 18px;
+  --fs-xl: clamp(3rem, 6vw + 0.75rem, 20rem);
+  --fs-m: clamp(1.4rem, 3vw + 0.5rem, 10rem);
+  --fs-s: clamp(1rem, 1.5vw + 0.6rem, 5rem);
+  --fs-xs: clamp(0.4rem, 1.2vw + 0.3rem, 5rem);
+  --clr-primary: white;
+  --clr-primary-shade-1: #f3f2ef;
+  --clr-primary-shade-2: #ffffffca;
+  --clr-secondary: black;
+  --clr-accent: #006115;
+  --clr-accent-shade-1: hsl(133, 100%, 30%);
+}
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: var(--fs-default);
+}
+
+body {
+  position: relative;
+  z-index: -1;
+
+  color: var(--clr-secondary);
+  background: var(--clr-primary);
+}
+
+header {
+  position: fixed;
+  top: 0px;
+  z-index: 1;
+
+  width: 100%;
+  padding: 1% 2% 0.2% 2%;
+  user-select: none;
+
+  display: flex;
+}
+
+.logo-container {
+  width: 30%;
+  margin-right: auto;
+  padding-top: 1%;
+}
+
+.logo {
+  min-width: 170px;
+  max-width: 100%;
+}
+
+.navbar-links {
+  display: none;
+}
+
+.navbar-links ul {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  margin-top: 60px;
+  list-style: none;
+
+  animation: fadeIn 0.4s ease-in 0.1s;
+}
+
+.navbar-links li {
+  display: block;
+  width: 100%;
+  text-align: center;
+}
+
+.navbar-links a {
+  display: block;
+  width: 100%;
+  padding: 2.5% 0;
+
+  color: var(--clr-secondary);
+  font-family: var(--ff-subtext);
+  font-size: clamp(1.1rem, 2vw + 0.5rem, 1.5rem);
+  font-weight: 500;
+  text-decoration: none;
+}
+
+.link:hover {
+  background-color: rgba(255, 255, 255, 0.251);
+  border-color: var(--clr-primary);
+}
+
+.navbar-links li:last-child {
+  margin-top: 15px;
+}
+
+.navbar-links li:last-child a {
+  display: inline;
+  padding: 1% 6.5%;
+  border: 0.2em solid var(--clr-secondary);
+  border-radius: 2em;
+  color: var(--clr-secondary);
+}
+
+.menu-icon {
+  position: relative;
+  top: 0px;
+  z-index: 3;
+
+  width: 5%;
+  margin: 15px 30px;
+  padding-bottom: 3%;
+}
+
+.menu-icon * {
+  width: 35px;
+  height: 7px;
+  margin: 5px 0;
+
+  background-color: var(--clr-primary);
+  border: 1.5px solid var(--clr-secondary);
+  border-radius: 5px;
+
+  transition: 0.4s;
+}
+
+.click .bar1 {
+  transform: translate(0, 11px) rotate(-45deg);
+}
+
+.click .bar2 {
+  opacity: 0;
+}
+
+.click .bar3 {
+  transform: translate(0, -13px) rotate(45deg);
+}
+
+.show {
+  display: block;
+  background: var(--clr-primary-shade-1);
+
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  z-index: 2;
+
+  animation: slideIn 0.3s ease-in;
+}
+
+section {
+  padding: clamp(7rem, 12vw + 2rem, 25rem) 4%;
+}
+
+.viewport-size {
+  width: 100%;
+  height: 100vh;
+  height: 100lvh;
+  overflow: hidden;
+}
+
+
+/* Animations */
+@keyframes slideIn {
+  from {
+    height: 0vh;
+    height: 0lvh;
+  }
+
+  to {
+    bottom: 0px;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+  }
+
+  to {
+    opacity: 0;
+  }
+}
+
+/* Media Queries */
+@media (min-width: 320px) {}
+
+@media (min-width: 425px) {
+  .logo-container {
+    width: 180px;
+  }
+
+  .text-container-1 {
+    width: 90%;
+  }
+}
+
+@media (min-width: 640px) {
+  .logo-container {
+    width: 185px;
+  }
+}
+
+
+@media (min-width: 768px) {
+  .logo-container {
+    width: 190px;
+  }
+
+  .text-container-1 {
+    width: 70%;
+  }
+
+  .menu-icon {
+    display: none;
+  }
+
+  .navbar-links {
+    margin: auto 0;
+    display: block;
+    width: 75%;
+  }
+
+  .navbar-links ul {
+    margin: 0;
+    flex-direction: row;
+    justify-items: space-evenly;
+  }
+
+  .navbar-links li:last-child {
+    width: 100%;
+    margin: 0;
+  }
+
+  .navbar-links li:last-child a {
+    display: block;
+    width: 100%;
+    padding: 6% 6.5%;
+
+    color: inherit;
+    border: 0.2em solid var(--clr-secondary);
+  }
+
+  .navbar-links a {
+    display: inline;
+    padding: 9% 9.5%;
+
+    color: inherit;
+    border-radius: 1.2em;
+    font-size: clamp(0.6rem, 1.1vw + 0.2rem, 2rem);
+    transition: all 0.3s ease-in;
+  }
+}
+
+@media (min-width: 1024px) {
+  .logo-container {
+    width: 200px;
+    padding: 0;
+  }
+
+  .text-container-1 {
+    width: 60%;
+  }
+}
+
+@media (min-width: 1280px) {
+  .logo-container {
+    width: 16%;
+  }
+}
+
+@media (min-width: 1536px) {}
