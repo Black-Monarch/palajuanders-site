@@ -1,8 +1,22 @@
 // Function Calls
 isOnDesktop();
 changeAttraction(0);
+faqsItem();
 
 // Functions
+function faqsItem() {
+	const questionBullets = document.querySelectorAll(".faqitem");
+  
+	questionBullets.forEach((faqitem) => {
+	  const question = faqitem.querySelector(".question");
+	  const answer = faqitem.querySelector(".answer");
+  
+	  question.addEventListener("click", () => {
+		faqitem.classList.toggle("active");
+	  });
+	});
+  }
+
 async function changeAttraction(index) {
 	const attractions = ['El Nido', 'Puerto Princesa', 'Coron', 'Port Barton', 'Balabac', 'Taytay'];
 	const selectors = ['.background', '.text-region', '.text-attraction', '.text-description']
