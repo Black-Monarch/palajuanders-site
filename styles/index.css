@@ -1,26 +1,19 @@
-body {
-  color: var(--clr-secondary);
-}
+.scrolled {
+  background: var(--clr-primary);
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
 
-.scrolled.navbar-links a {
-  color: var(--clr-secondary);
-}
+  .navbar-links a {
+    color: var(--clr-accent);
+  }
 
-.scrolled .link:hover {
-  color: var(--clr-primary);
-  background: var(--clr-accent);
-  border-color: var(--clr-accent);
-}
+  .navbar-links li:last-child {
+    border: 0.2em solid var(--clr-accent);
+    border-radius: 1.2em;
+  }
 
-.scrolled.navbar-links li:last-child a {
-  color: var(--clr-secondary);
-  border-color: var(--clr-secondary);
-}
-
-.scrolled.navbar-links li:last-child a:hover {
-  color: var(--clr-primary);
-  background: var(--clr-accent);
-  border-color: var(--clr-accent);
+  .navbar-links li:last-child a {
+    color: var(--clr-accent);
+  }
 }
 
 .background {
@@ -38,7 +31,7 @@ body {
 .film {
   position: absolute;
   z-index: -1;
-  background: rgba(0, 0, 0, 0.6);
+  background: rgba(0, 0, 0, 0.4);
 }
 
 .text-region,
@@ -83,10 +76,6 @@ button {
   margin: auto;
 }
 
-.text-container-2>* {
-  color: var(--clr-secondary);
-}
-
 .text-container-2 h3 {
   font-family: var(--ff-subtext);
   font-size: var(--fs-m);
@@ -110,19 +99,20 @@ button {
   padding: clamp(5rem, 7.5vw + 3rem, 20rem) 4%;
 }
 
-.section-3{
-  background: white;
-  padding-top: 11%;
+.section-3 {
+  background: #d9d9b1db;
+  padding-top: 0%;
 }
 
-.text-container-3{
+.text-container-3 {
   width: 52%;
   margin: auto;
+  padding-top: 11%;
 }
 
 .text-container-3 h4 {
   text-align: center;
-  color: green;
+  color: var(--clr-accent);
   font-size: 1.7rem;
 }
 
@@ -142,7 +132,7 @@ button {
   cursor: pointer;
 }
 
-.question h5{
+.question h5 {
   font-size: 1.5rem;
 }
 
@@ -150,7 +140,7 @@ button {
   padding: 10px;
   max-height: 0;
   overflow: hidden;
-  transition: max-height 1.4s ease;
+  transition: max-height .2s ease;
 }
 
 .answer p {
@@ -159,10 +149,10 @@ button {
   font-size: 1.2rem;
 }
 
-.faqitem.active .answer{
+.faqitem.active .answer {
   display: block;
-  max-height: 300px;
-  animation: fade 1s ease-in-out;
+  max-height: 2000px;
+  animation: fade .3s ease-out;
 }
 
 .faqitem.active svg {
@@ -170,7 +160,7 @@ button {
 }
 
 svg {
-  transition: transform .5s ease-in;
+  transition: transform .2s ease-in;
 }
 
 .footer {
@@ -187,44 +177,32 @@ svg {
 .footer-columns {
   display: flex;
   justify-content: center;
-  gap: 600px; 
+  gap: 600px;
   flex-wrap: wrap;
 }
 
 .footer-column {
   flex: 1;
   text-align: left;
-  max-width: 300px; 
+  max-width: 300px;
 }
 
-
 @keyframes fade {
-  from{
+  from {
     opacity: 0;
     transform: translateY(-10px);
   }
-  to{
+
+  to {
     opacity: 1;
     transform: translateY(0px);
   }
 }
 
-
 .fadeIn {
-  animation: fadeIn 2s ease-in;
+  animation: fadeIn 0.5s ease-in;
 }
 
 .fadeOut {
-  animation: fadeOut 2s ease-out;
-}
-
-@media (min-width: 768px) {
-  .navbar-links a {
-    color: var(--clr-primary);
-  }
-
-  .navbar-links li:last-child a {
-    color: var(--clr-primary);
-    border: 0.2em solid var(--clr-primary-shade-1);
-  }
+  animation: fadeOut 0.5s ease-out;
 }
