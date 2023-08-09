@@ -6,16 +6,16 @@ faqsItem();
 // Functions
 function faqsItem() {
 	const questionBullets = document.querySelectorAll(".faqitem");
-  
+
 	questionBullets.forEach((faqitem) => {
-	  const question = faqitem.querySelector(".question");
-	  const answer = faqitem.querySelector(".answer");
-  
-	  question.addEventListener("click", () => {
-		faqitem.classList.toggle("active");
-	  });
+		const question = faqitem.querySelector(".question");
+		const answer = faqitem.querySelector(".answer");
+
+		question.addEventListener("click", () => {
+			faqitem.classList.toggle("active");
+		});
 	});
-  }
+}
 
 async function changeAttraction(index) {
 	const attractions = ['El Nido', 'Puerto Princesa', 'Coron', 'Port Barton', 'Balabac', 'Taytay'];
@@ -27,8 +27,8 @@ async function changeAttraction(index) {
 	const elements = getElements([], selectors);
 	setAttraction(attraction, elements[0]);
 
-	await toggleAnimation(elements, animations[0], 5000);
-	await toggleAnimation(elements, animations[1], 1900);
+	await toggleAnimation(elements, animations[0], 7000);
+	await toggleAnimation(elements, animations[1], 400);
 	removeAnimation(elements, animations);
 	changeAttraction(++index);
 }
@@ -77,7 +77,10 @@ function changeHeaderColorOnSroll() {
 	window.addEventListener('scroll', () => {
 		const nav = document.querySelector('nav');
 		const header = document.querySelector('header');
-		const isScrolling = window.scrollY >= window.innerHeight - header.clientHeight / 2;
-		nav.classList.toggle('scrolled', isScrolling);
+		// const isScrolling = window.scrollY >= window.innerHeight - header.clientHeight / 2;
+		// nav.classList.toggle('scrolled', isScrolling);
+
+		const isScrolling = window.scrollY >= window.innerHeight - header.clientHeight / 2 - 20;
+		header.classList.toggle('scrolled', isScrolling);
 	});
 }

@@ -7,12 +7,11 @@
   --fs-m: clamp(1.4rem, 3vw + 0.5rem, 10rem);
   --fs-s: clamp(1rem, 1.5vw + 0.6rem, 5rem);
   --fs-xs: clamp(0.4rem, 1.2vw + 0.3rem, 5rem);
-  --clr-primary: white;
+  --clr-primary: #ffffff;
   --clr-primary-shade-1: #f3f2ef;
   --clr-primary-shade-2: #ffffffca;
   --clr-secondary: black;
-  --clr-accent: #006115;
-  --clr-accent-shade-1: hsl(133, 100%, 30%);
+  --clr-accent: #1D5D9B;
 }
 
 *,
@@ -104,9 +103,10 @@ header {
 .navbar-links li:last-child a {
   display: inline;
   padding: 1% 6.5%;
+  
+  color: var(--clr-secondary);
   border: 0.2em solid var(--clr-secondary);
   border-radius: 2em;
-  color: var(--clr-secondary);
 }
 
 .menu-icon {
@@ -254,16 +254,16 @@ section {
     width: 100%;
     padding: 6% 6.5%;
 
-    color: inherit;
-    border: 0.2em solid var(--clr-secondary);
+    color: var(--clr-primary);
+    border: 0.2em solid var(--clr-primary);
+    border-radius: 1.2em;
   }
 
   .navbar-links a {
     display: inline;
     padding: 9% 9.5%;
 
-    color: inherit;
-    border-radius: 1.2em;
+    color: var(--clr-primary);
     font-size: clamp(0.6rem, 1.1vw + 0.2rem, 2rem);
     transition: all 0.3s ease-in;
   }
