@@ -21,16 +21,16 @@ if [[ $? -ne 0 ]]; then
 fi
 
 # function to delete unused and already pushed branches
-(git fetch -p && git branch --merged | grep -v '*' \
-| grep -v 'main' | xargs git branch -d) 2>> ./logs/error-logs.txt > ./logs/output-logs.txt 
+(git branch -a | grep -vE '\*|main|head' | xargs git branch -D) 2>> ./logs/error-logs.txt > ./logs/output-logs.txt 
 
 # function to get latest code changes from github
 get_changes () 
 {
-    (git switch main \
-    && git pull --rebase origin main) \
-        2> ./logs/error-logs.txt \
-        > ./logs/output-logs.txt 
+    (git stash -u && git switch main \
+        && git pull --rebase origin main \
+            && git stash apply) \
+                2> ./logs/error-logs.txt \
+                > ./logs/output-logs.txt 
 }
 
 # function to save changes, pull latest code from github then 
@@ -42,10 +42,9 @@ save_task ()
     if [[ "${#task}" -ne  0 ]]; then 
         (git switch -c "feature/${task}" \
             && git add . && git commit -m "$message" \
-                && git push -u origin "feature/${task}" \
-                    && git pull --rebase origin main) \
-                        2> ./logs/error-logs.txt \
-                        > ./logs/output-logs.txt 
+                && git push -u origin "feature/${task}") \
+                    2> ./logs/error-logs.txt \
+                    > ./logs/output-logs.txt 
     else
         clear; save_task
     fi
@@ -56,14 +55,15 @@ save_task ()
 case $option in
     1) get_changes;;
     2) save_task;;
-    3) git log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(auto)%d%C(reset)' --all
+    3) git log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(auto)%d%C(reset)'
 esac
 
 # check if there's an error encountered while executing git commands
 if [[ $? -eq 0 ]]; then
-    if (( option == 2 )); then
-        echo "Success saving changes. Tell Just to create a pull request with your task."
-    fi
+    case $? in
+        1) echo "Success updating the codebase with latest changes. You may now proceed with your task.";; 
+        2) echo "Success saving changes. Tell Just to create a pull request with your task.";;
+    esac
 else
-    echo "Encountered an error, stopping execution. Report it to Just."
+    echo "Encountered an error, stopping execution. Check error logs and report it to Just."
 fi
