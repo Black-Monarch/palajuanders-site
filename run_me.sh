@@ -21,7 +21,7 @@ if [[ $? -ne 0 ]]; then
 fi
 
 # function to delete unused and already pushed branches
-(git branch -a | grep -vE '\*|main|head' | xargs git branch -D) 2>> ./logs/error-logs.txt > ./logs/output-logs.txt 
+(git fetch -p && git branch -a | grep -vE '\*|main|head' | xargs git branch -D) 2>> ./logs/error-logs.txt > ./logs/output-logs.txt 
 
 # function to get latest code changes from github
 get_changes () 
@@ -60,7 +60,7 @@ esac
 
 # check if there's an error encountered while executing git commands
 if [[ $? -eq 0 ]]; then
-    case $? in
+    case $option in
         1) echo "Success updating the codebase with latest changes. You may now proceed with your task.";; 
         2) echo "Success saving changes. Tell Just to create a pull request with your task.";;
     esac
