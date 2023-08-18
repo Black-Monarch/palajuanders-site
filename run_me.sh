@@ -60,7 +60,7 @@ esac
 
 # check if there's an error encountered while executing git commands
 if [[ $? -eq 0 ]]; then
-    case $? in
+    case $option in
         1) echo "Success updating the codebase with latest changes. You may now proceed with your task.";; 
         2) echo "Success saving changes. Tell Just to create a pull request with your task.";;
     esac
