@@ -51,7 +51,6 @@ save_task ()
 }
 
 # executes function/command based on what is entered by user
-# default option is to show the commit history 
 case $option in
     1) get_changes;;
     2) save_task;;

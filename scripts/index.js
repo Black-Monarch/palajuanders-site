@@ -1,25 +1,28 @@
 // Function Calls
-isOnDesktop();
-changeAttraction(0);
-faqsItem();
+showCurrentPage();
+shrinkHeaderOnScroll();
+startCarousel(0);
 
-// Functions
-function faqsItem() {
-	const questionBullets = document.querySelectorAll(".faqitem");
-
-	questionBullets.forEach((faqitem) => {
-		const question = faqitem.querySelector(".question");
-		const answer = faqitem.querySelector(".answer");
-
-		question.addEventListener("click", () => {
-			faqitem.classList.toggle("active");
-		});
+// Function Definitions
+function shrinkHeaderOnScroll() {
+	window.addEventListener('scroll', () => {
+		const nav = document.querySelector('nav');
+		// const isScrolling = window.scrollY >= window.innerHeight - nav.clientHeight - 50;
+		const isScrolling = window.scrollY >= 50;
+		nav.classList.toggle('scrolled', isScrolling);
 	});
 }
 
-async function changeAttraction(index) {
+function showCurrentPage() {
+	const links = document.querySelectorAll('nav > ul > li > a');
+	for (const link of links) {
+		if (link.pathname === window.location.pathname) link.classList.toggle('active');
+	}	
+}
+
+async function startCarousel(index) {
 	const attractions = ['El Nido', 'Puerto Princesa', 'Coron', 'Port Barton', 'Balabac', 'Taytay'];
-	const selectors = ['.background', '.text-region', '.text-attraction', '.text-description']
+	const selectors = ['#background', '#region', '#name', '#description']
 	const animations = ['fadeIn', 'fadeOut'];
 
 	if (index == attractions.length) index = 0;
@@ -28,17 +31,18 @@ async function changeAttraction(index) {
 	setAttraction(attraction, elements[0]);
 
 	await toggleAnimation(elements, animations[0], 7000);
-	await toggleAnimation(elements, animations[1], 400);
+	await toggleAnimation(elements, animations[1], 500);
 	removeAnimation(elements, animations);
-	changeAttraction(++index);
+	startCarousel(++index);
 }
 
 function setAttraction(name, background) {
 	background.src = `images/${name}.jpg`;
 	name = name.split(' ');
 
-	const attractionName = document.querySelector('.text-attraction');
+	const attractionName = document.querySelector('#name');
 	if (name.length > 1) name = [name.join(' ')];
+	console.log(name);
 	attractionName.innerHTML = name;
 }
 
@@ -63,24 +67,5 @@ function removeAnimation(elements, animations) {
 		animations.forEach(animation => {
 			element.classList.remove(animation);
 		})
-	});
-}
-
-function isOnDesktop() {
-	const mediaQuery = window.matchMedia('(min-width: 768px)')
-	if (mediaQuery.matches) {
-		changeHeaderColorOnSroll();
-	}
-}
-
-function changeHeaderColorOnSroll() {
-	window.addEventListener('scroll', () => {
-		const nav = document.querySelector('nav');
-		const header = document.querySelector('header');
-		// const isScrolling = window.scrollY >= window.innerHeight - header.clientHeight / 2;
-		// nav.classList.toggle('scrolled', isScrolling);
-
-		const isScrolling = window.scrollY >= window.innerHeight - header.clientHeight / 2 - 20;
-		header.classList.toggle('scrolled', isScrolling);
 	});
 }
