@@ -17,29 +17,12 @@ nav>ul>li>a:hover {
   color: var(--clr-primary);
 }
 
+.active:hover {
+  color: var(--clr-primary);
+}
+
 nav.scrolled ul>li>a {
   color: var(--clr-secondary);
-}
-
-nav ul>li:last-child a {
-  border: 2px solid var(--clr-primary);
-  background: none;
-  box-shadow: none;
-}
-
-nav ul>li:last-child a:hover {
-  color: var(--clr-secondary);
-  background: var(--clr-primary-shade-1);
-}
-
-nav.scrolled ul>li:last-child a {
-  color: var(--clr-primary-shade-1);
-  background: var(--clr-accent);
-  border: none;
-}
-
-nav.scrolled ul>li:last-child a:hover {
-  background: var(--clr-accent-shade-1);
 }
 
 nav.scrolled>ul>li>a:hover,
@@ -47,8 +30,42 @@ nav.scrolled .active {
   color: var(--clr-accent);
 }
 
-section:nth-child(1) div:nth-child(2) {
-  width: 100%;
+nav .button {
+  border: 2px solid var(--clr-primary);
+  background: none;
+  box-shadow: none;
+}
+
+nav .button:hover {
+  color: var(--clr-secondary);
+  background: var(--clr-primary-shade-1);
+}
+
+nav.scrolled .button {
+  color: var(--clr-primary-shade-1);
+  background: var(--clr-accent);
+  border: solid var(--clr-accent);
+  box-shadow: 0px 6px 4px 0px rgba(0, 0, 0, 0.25);
+}
+
+nav.scrolled .button:hover {
+  background: none;
+}
+
+section:nth-child(1) div:first-child {
+  flex: 1;
+}
+
+section:nth-child(1) div:last-child {
+  width: 40%;
+  color: var(--clr-primary);
+  padding: clamp(13rem, -12.161rem + 30.968vw, 25rem) 2rem;
+  position: absolute;
+  top: 0;
+  z-index: 2;
+
+  display: flex;
+  flex-direction: column;
 }
 
 #gradient {
@@ -78,17 +95,6 @@ section:nth-child(1) div:nth-child(2) {
   z-index: 2;
 }
 
-section:nth-child(1) div:last-child {
-  width: 40%;
-  color: var(--clr-primary);
-  padding: clamp(13rem, -22.645rem + 43.871vw, 30rem) 2rem;
-  position: absolute;
-  z-index: 3;
-
-  display: flex;
-  flex-direction: column;
-}
-
 #region {
   font: 500 var(--fs-s) var(--ff-subtext);
 }
@@ -104,31 +110,134 @@ section:nth-child(1) div:last-child {
   padding-top: 20px;
 }
 
-.fadeIn {
-  animation: fadeIn 0.5s ease-in;
+section:nth-child(2) {
+  display: flex;
+  justify-content: center;
+  gap: 3%;
 }
 
-.fadeOut {
-  animation: fadeOut 0.5s ease-in;
+section:nth-child(2) div:first-child {
+  padding-top: 8%;
+  width: 50%;
 }
 
-/* Carousel Animations */
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-  }
-
-  to {
-    opacity: 1;
-  }
+section:nth-child(2)>div>h2 {
+  font-weight: 400;
+  padding-left: 10px;
 }
 
-@keyframes fadeOut {
-  from {
-    opacity: 1;
-  }
+section:nth-child(2)>div>h1 {
+  padding: 10px 0 25px;
+}
 
-  to {
-    opacity: 0;
-  }
+section:nth-child(2) div:last-child {
+  padding-top: 6%;
+  width: 26%;
+  height: 75vh;
+}
+
+section:nth-child(3) {
+  width: 100%;
+  padding-top: 6%;
+
+  flex-direction: column;
+  align-items: center;
+  gap: 3%;
+}
+
+section:nth-child(3)>div {
+  position: absolute;
+  z-index: 0;
+}
+
+section:nth-child(3)>h2 {
+  font: bold calc(var(--fs-m) - 1rem) var(--ff-subtext);
+}
+
+section:nth-child(3)>h1 {
+  width: 60%;
+  font-size: calc(var(--fs-l) - 1.7rem);
+  text-align: center;
+}
+
+section:nth-child(3)>p {
+  width: 40%;
+  text-align: center;
+  padding-bottom: 2%;
+}
+
+section:nth-child(3)>button {
+  background: none;
+  border: none;
+  margin: 0 auto;
+}
+
+section:last-child {
+  display: flex;
+  align-items: center;
+  gap: 10%;
+}
+
+section:last-child>div:nth-child(1) {
+  width: 40%;
+  height: 100vh;
+  border-radius: var(--brd-radius);
+
+  position: relative;
+  left: -5%;
+  bottom: -15%;
+  z-index: 0;
+}
+
+section:last-child>div>div:first-child {
+  position: relative;
+  left: 0px;
+}
+
+section:last-child div>div>h1 {
+  font-size: calc(var(--fs-l) - 1.2rem);
+  padding: 8% 0 6%;
+}
+
+section:last-child div>h1 {
+  font-size: calc(var(--fs-l) - 2.7rem);
+  line-height: calc(var(--fs-l) - 2rem);
+  text-align: center;
+}
+
+section:last-child>div>div:last-child {
+  position: relative;
+  left: -10%;
+}
+
+section:last-child>div:nth-child(2) {
+  width: 60%;
+  height: 80vh;
+  border-radius: var(--brd-radius);
+  padding: 4% 6%;
+
+  position: relative;
+  right: 5%;
+}
+
+#answer {
+  width: 40vw;
+  font-size: calc(var(--fs-s) + 0.6rem);
+  padding: 9% 0 0 3%;
+}
+
+.bar {
+  width: 75%;
+  height: 10vh;
+  margin: 4%;
+  background: var(--clr-accent);
+  border-radius: var(--brd-radius);
+
+  transition: all 0.5s ease-in-out;
+}
+
+.bar:hover,
+.selected {
+  width: 92%;
+  height: 14vh;
 }

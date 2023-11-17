@@ -1,21 +1,19 @@
 /* Global Variables */
 :root {
-  /* clr means color
-     primary - is the most used color including font color
-     secondary - is the next most used color and contrast to primary
-     accent - is the brightest color used for emphasis
-  */
   --clr-primary: #FFFFFF;
   --clr-primary-shade-1: #ECECEC;
   --clr-secondary: #36454F;
   --clr-accent: #1D5D9B;
   --clr-accent-shade-1: #6CA2FF;
+  --brd-radius: 100px;
 
   --ff-primary: 'Merriweather', sans-serif;
   --ff-title: 'Playfair Display', sans-serif;
   --ff-subtext: 'Lora', sans-serif;
   --fs-default: clamp(1rem, -0.258rem + 1.548vw, 1.6rem);
   --fs-xl: 7rem;
+  --fs-l: 5.2rem;
+  --fs-m: 3.5rem;
   --fs-s: 1.1rem;
   --fs-xs: 0.9rem;
 }
@@ -41,7 +39,7 @@ nav {
   position: fixed;
   display: flex;
   justify-content: space-around;
-  z-index: 4;
+  z-index: 3;
 }
 
 nav>div {
@@ -49,6 +47,10 @@ nav>div {
   max-width: 400px;
 
   transition: all 0.5s ease-in-out;
+}
+
+nav.scrolled>div {
+  width: 8%;
 }
 
 img {
@@ -70,11 +72,19 @@ nav ul {
   transition: all 0.5s ease-in-out;
 }
 
+nav.scrolled>ul {
+  gap: 4%;
+}
+
 nav ul>li>a {
   color: var(--clr-secondary);
   font: 500 var(--fs-s) var(--ff-primary);
 
   transition: all 0.5s ease-in-out;
+}
+
+nav.scrolled>ul>li>a {
+  font-size: calc(var(--fs-s) - 0.2rem);
 }
 
 nav>ul>li>a:hover,
@@ -83,41 +93,13 @@ nav>ul>li>a:hover,
   font-weight: bold;
 }
 
-nav.scrolled>ul>li>a {
-  font-size: calc(var(--fs-s) - 0.2rem);
+nav.scrolled>ul>li>a:hover {
+  color: var(--clr-accent);
 }
 
-nav ul>li:last-child a {
-  padding: 5px 20px;
-  color: var(--clr-primary-shade-1);
-  background: var(--clr-accent);
-  border-radius: 25px;
-  box-shadow: 0px 6px 4px 0px rgba(0, 0, 0, 0.25);
-}
-
-nav ul>li:last-child a:hover {
-  background: var(--clr-accent-shade-1);
-}
-
-nav.scrolled ul>li:last-child a:hover {
-  color: var(--clr-primary);
-}
-
+.active:hover,
 nav.scrolled .active:hover {
   color: var(--clr-accent-shade-1);
-}
-
-nav.scrolled>div {
-  width: 8%;
-}
-
-nav.scrolled>ul {
-  gap: 4%;
-}
-
-nav.scrolled>ul>li>a:hover,
-.active {
-  color: var(--clr-accent);
 }
 
 a {
@@ -135,9 +117,11 @@ section {
 
 footer {
   background: var(--clr-secondary);
-  padding: 20px 20px;
+  padding: 15px 10px;
   color: var(--clr-primary);
-  font: var(--fs-s) var(--ff-subtext);
+  font: calc(var(--fs-s) - 0.2rem) var(--ff-subtext);
+
+  position: relative;
 }
 
 footer>div {
@@ -160,15 +144,7 @@ footer>div>div>span>svg {
 }
 
 footer>h3 {
-  padding-top: 10px;
+  padding-top: 5px;
   text-align: center;
-  font-size: var(--fs-s);
-}
-
-.light {
-  background: var(--clr-primary);
-}
-
-.dark {
-  background: var(--clr-primary-shade-1);
+  font-size: calc(var(--fs-s) - 0.2rem);
 }

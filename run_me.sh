@@ -1,7 +1,4 @@
-# this is a bash script, the shebang line is 
-# not needed here so I removed it.
-
-# ask user for input 
+# asks user for input 
 while true; do
     echo "What would you like to do?
     1. Get changes
@@ -33,7 +30,7 @@ get_changes ()
                 > ./logs/output-logs.txt 
 }
 
-# function to save changes, pull latest code from github then 
+# function to save changes, code from github then 
 # push your changes to github
 save_task ()
 {
